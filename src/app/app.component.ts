@@ -6,7 +6,8 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 @Component({
   selector: 'app-root',
   imports: [HeaderComponent, ProductsListComponent],
-  template: `<app-header />, <app-products-list />`,
+  template: ` <app-header />
+    <app-products-list />`,
   styles: '',
 })
 export class AppComponent {

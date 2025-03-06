@@ -47,7 +47,8 @@ export class ProductsListComponent {
       // "rating": {
       // "rate": 2.1,
       // "count": 430
-      // }
+      // },
+      stock: 0,
     },
     {
       id: 5,
@@ -61,7 +62,8 @@ export class ProductsListComponent {
       // "rating": {
       // "rate": 4.6,
       // "count": 400
-      // }
+      // },
+      stock: 1,
     },
     {
       id: 6,
@@ -74,7 +76,8 @@ export class ProductsListComponent {
       // "rating": {
       // "rate": 3.9,
       // "count": 70
-      // }
+      // },
+      stock: 5,
     },
 
     // Add more products here...
