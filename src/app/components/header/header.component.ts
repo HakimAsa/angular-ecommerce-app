@@ -10,7 +10,4 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent {
   cartService = inject(CartService);
-  handleBtnClicked() {
-    console.log('btn clicked');
-  }
 }
