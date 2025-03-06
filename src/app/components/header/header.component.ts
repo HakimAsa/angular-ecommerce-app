@@ -8,7 +8,7 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  cart = signal('Cart');
+  // cart = signal('Cart');
   handleBtnClicked() {
     alert('btn clicked');
   }
