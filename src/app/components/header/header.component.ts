@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,8 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  // cart = signal('Cart');
+  cartService = inject(CartService);
   handleBtnClicked() {
-    alert('btn clicked');
+    console.log('btn clicked');
   }
 }
