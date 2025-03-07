@@ -82,4 +82,25 @@ export class ProductsListComponent {
 
     // Add more products here...
   ]);
+
+  filteredProducts = signal<Product[]>([]);
+  constructor() {
+    this.filteredProducts.set(this.products()); // Access the value using ()
+  }
+
+  onSearch(searchValue: string) {
+    if (searchValue.trim()) {
+      this.filteredProducts.set(
+        this.products().filter(
+          (product) =>
+            product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+            product.description
+              .toLowerCase()
+              .includes(searchValue.toLowerCase())
+        )
+      );
+    } else {
+      this.filteredProducts.set(this.products());
+    }
+  }
 }
