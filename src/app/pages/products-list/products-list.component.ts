@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Product } from '../../models/products.model';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-products-list',
@@ -83,24 +84,16 @@ export class ProductsListComponent {
     // Add more products here...
   ]);
 
-  filteredProducts = signal<Product[]>([]);
-  constructor() {
-    this.filteredProducts.set(this.products()); // Access the value using ()
-  }
+  searchService = inject(SearchService);
 
-  onSearch(searchValue: string) {
-    if (searchValue.trim()) {
-      this.filteredProducts.set(
-        this.products().filter(
+  filteredProducts = computed(() => {
+    const searchValue = this.searchService.getSearchTerm()().toLowerCase(); // Get latest search term
+    return searchValue
+      ? this.products().filter(
           (product) =>
-            product.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-            product.description
-              .toLowerCase()
-              .includes(searchValue.toLowerCase())
+            product.title.toLowerCase().includes(searchValue) ||
+            product.description.toLowerCase().includes(searchValue)
         )
-      );
-    } else {
-      this.filteredProducts.set(this.products());
-    }
-  }
+      : this.products();
+  });
 }
