@@ -4,11 +4,11 @@
   <div class="mx-auto">
     <img
       [src]="product().image"
-      [srcset]="`${product().image}?w=200 200w, ${product().image}?w=400 400w`"
-      sizes="(max-width: 600px) 200px, 400px"
+      [srcset]="`${product().image}?w=200 200w, ${product().image}?w=400 400w, ${product().image}?w=800 800w`"
+      sizes="(max-width: 600px) 200px, (max-width: 1200px) 400px, 800px"
       width="200"
       height="100"
-      alt="Product Image"
+      [alt]="'Product Image ' + product().id"
       class="w-[200px] h-[100px] object-contain"
     />
   </div>
