@@ -4,7 +4,6 @@ import { Component, input, output } from '@angular/core';
   selector: 'app-primary-button',
   imports: [],
   templateUrl: './primary-button.component.html',
-  styleUrl: './primary-button.component.css',
 })
 export class PrimaryButtonComponent {
   label = input('');

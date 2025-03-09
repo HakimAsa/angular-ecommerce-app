@@ -2,10 +2,11 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Product } from '../../models/products.model';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { SearchService } from '../../services/search.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ProductCardComponent],
+  imports: [ProductCardComponent, PaginationComponent],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css',
 })
@@ -96,4 +97,21 @@ export class ProductsListComponent {
         )
       : this.products();
   });
+
+  itemsPerPage = 10;
+  currentPage = signal(1); // Signal for pagination
+
+  totalPages = computed(() =>
+    Math.ceil(this.products().length / this.itemsPerPage)
+  );
+
+  paginatedProducts = computed(() => {
+    const start = (this.currentPage() - 1) * this.itemsPerPage;
+    console.log(start);
+    return this.filteredProducts().slice(start, start + this.itemsPerPage);
+  });
+
+  onPageChange(page: number) {
+    this.currentPage.set(page);
+  }
 }

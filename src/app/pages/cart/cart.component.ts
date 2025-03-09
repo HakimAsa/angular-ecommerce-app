@@ -7,7 +7,6 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
   selector: 'app-cart',
   imports: [CartItemComponent, OrderSummaryComponent],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
 })
 export class CartComponent {
   cartService = inject(CartService);
