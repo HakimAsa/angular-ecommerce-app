@@ -107,7 +107,6 @@ export class ProductsListComponent {
 
   paginatedProducts = computed(() => {
     const start = (this.currentPage() - 1) * this.itemsPerPage;
-    console.log(start);
     return this.filteredProducts().slice(start, start + this.itemsPerPage);
   });
 

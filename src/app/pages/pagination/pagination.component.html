@@ -1,5 +1,15 @@
 <div class="flex jsutify-center">
   <ul class="flex items-center gap-2">
+    <!-- First Page Button -->
+    <li>
+      <button
+        class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-all disabled:opacity-50"
+        [disabled]="currentPage === 1"
+        (click)="goToPage(1)"
+      >
+        «
+      </button>
+    </li>
     <!-- Previous button -->
     <li>
       <button
@@ -7,13 +17,14 @@
         [disabled]="currentPage === 1"
         (click)="goToPage(currentPage - 1)"
       >
-        &laquo;
+        &lsaquo;
       </button>
       <!-- Page Numbers -->
     </li>
 
+    @for (page of getPages(); track page) { @if (typeof page === 'number') {
+
     <li>
-      @for (page of getPages(); track page) {
       <button
         class="px-4 py-2 rounded-lg transition-all duration-300 ease-in-out"
         [class]="
@@ -21,12 +32,17 @@
             ? 'bg-blue-500 text-white'
             : 'bg-gray-200 hover:bg-gray-300'
         "
-        (click)="goToPage(page)"
+        (click)="goToPage(+page)"
       >
         {{ page }}
       </button>
-      }
     </li>
+    } @if (page === '...') {
+    <li>
+      <span class="px-3">...</span>
+    </li>
+    } }
+
     <!-- Next button -->
     <li>
       <button
@@ -34,7 +50,17 @@
         [disabled]="currentPage === totalPages"
         (click)="goToPage(currentPage + 1)"
       >
-        &raquo;
+        &rsaquo;
+      </button>
+    </li>
+    <!-- Last Page Button -->
+    <li>
+      <button
+        class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-all disabled:opacity-50"
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(totalPages)"
+      >
+        »
       </button>
     </li>
   </ul>

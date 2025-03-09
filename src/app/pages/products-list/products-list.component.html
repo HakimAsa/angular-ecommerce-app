@@ -1,6 +1,6 @@
 <div class="p-4">
   <div class="p-8 grid grid-cols-3 gap-4">
-    @for (product of filteredProducts(); track product.id) {
+    @for (product of paginatedProducts(); track product.id) {
     <app-product-card [product]="product" />
     }
   </div>
